@@ -14,3 +14,4 @@ scan_results.json
 .vscode/
 .idea/
 .DS_Store
+*.txt

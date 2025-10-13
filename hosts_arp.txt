@@ -1,3 +1,0 @@
-# Nmap 7.97 scan initiated Tue Oct 14 01:55:19 2025 as: /opt/homebrew/bin/nmap -e en0 -PR -sn -n -T4 --max-retries 1 --host-timeout 500ms -oN hosts_arp.txt 192.168.8.0/24
-dnet: Failed to open device en0
-QUITTING!

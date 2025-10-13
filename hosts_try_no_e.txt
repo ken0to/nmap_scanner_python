@@ -1,3 +1,0 @@
-# Nmap 7.97 scan initiated Tue Oct 14 01:57:14 2025 as: /opt/homebrew/bin/nmap -PR -sn -n -oN hosts_try_no_e.txt 192.168.8.0/24
-dnet: Failed to open device en0
-QUITTING!
