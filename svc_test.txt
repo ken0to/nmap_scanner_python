@@ -1,0 +1,8 @@
+# Nmap 7.97 scan initiated Tue Oct 14 02:13:59 2025 as: /opt/homebrew/bin/nmap -sT -sV -p 1-200 -oN svc_test.txt 192.168.8.116
+Nmap scan report for iPhone (192.168.8.116)
+Host is up (0.0058s latency).
+All 200 scanned ports on iPhone (192.168.8.116) are in ignored states.
+Not shown: 200 closed tcp ports (conn-refused)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Oct 14 02:14:00 2025 -- 1 IP address (1 host up) scanned in 0.47 seconds

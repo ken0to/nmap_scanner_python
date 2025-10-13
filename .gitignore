@@ -1,0 +1,16 @@
+# Virtual environment
+venv/
+.env
+# Python
+__pycache__/
+*.pyc
+*.pyo
+# Logs / outputs
+*.log
+*.json
+*_scan.txt
+scan_results.json
+# Editor
+.vscode/
+.idea/
+.DS_Store
