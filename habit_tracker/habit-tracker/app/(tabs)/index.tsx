@@ -64,7 +64,11 @@ export default function TodayScreen() {
               alive!
             </Text>
           </View>
-          <ProgressRing value={completionRate} size={96} />
+          <ProgressRing
+            key={`${completedToday}-${activeHabits.length}`}
+            value={completionRate}
+            size={96}
+          />
         </AppCard>
 
         <View style={styles.habitsSection}>

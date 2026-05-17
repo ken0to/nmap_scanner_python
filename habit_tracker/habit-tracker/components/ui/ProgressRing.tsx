@@ -8,55 +8,45 @@ type ProgressRingProps = {
 };
 
 const TRACK_COLOR = "#DEE9FC";
-const STROKE = 8;
+const SEGMENT_COUNT = 100;
 
 export function ProgressRing({ value, size = 96 }: ProgressRingProps) {
   const progress = Math.max(0, Math.min(100, value));
   const displayValue = Math.round(progress);
-  const half = size / 2;
-  const angle = (progress / 100) * 360;
-
-  const rightRotation = Math.min(angle, 180) - 180;
-  const leftRotation = angle > 180 ? angle - 360 : -180;
-
-  const ringStyle = {
-    width: size,
-    height: size,
-    borderRadius: half,
-    borderWidth: STROKE,
-    borderColor: colors.primary
-  };
+  const filledSegments = displayValue;
+  const center = size / 2;
+  const stroke = 8;
+  const segmentLength = stroke + 2;
+  const segmentWidth = Math.max(3, stroke * 0.45);
+  const ringRadius = center - segmentLength / 2;
 
   return (
     <View style={[styles.wrap, { height: size, width: size }]}>
-      <View style={[styles.track, ringStyle, { borderColor: TRACK_COLOR }]} />
+      {Array.from({ length: SEGMENT_COUNT }, (_, index) => {
+        const angle = -90 + (360 / SEGMENT_COUNT) * index;
+        const radians = (angle * Math.PI) / 180;
+        const x = center + Math.cos(radians) * ringRadius;
+        const y = center + Math.sin(radians) * ringRadius;
+        const isFilled = index < filledSegments;
 
-      {angle > 0 ? (
-        <View style={[styles.fill, { height: size, width: size }]}>
-          <View style={[styles.clip, { height: size, right: 0, width: half }]}>
-            <View
-              style={[
-                ringStyle,
-                styles.rotator,
-                { left: -half, transform: [{ rotate: `${rightRotation}deg` }] }
-              ]}
-            />
-          </View>
-
-          {angle > 180 ? (
-            <View style={[styles.clip, { height: size, left: 0, width: half }]}>
-              <View
-                style={[
-                  ringStyle,
-                  styles.rotator,
-                  { left: 0, transform: [{ rotate: `${leftRotation}deg` }] }
-                ]}
-              />
-            </View>
-          ) : null}
-        </View>
-      ) : null}
-
+        return (
+          <View
+            key={index}
+            style={[
+              styles.segment,
+              {
+                backgroundColor: isFilled ? colors.primary : TRACK_COLOR,
+                borderRadius: segmentWidth,
+                height: segmentLength,
+                left: x - segmentWidth / 2,
+                top: y - segmentLength / 2,
+                transform: [{ rotate: `${angle + 90}deg` }],
+                width: segmentWidth
+              }
+            ]}
+          />
+        );
+      })}
       <Text style={styles.value}>{displayValue}%</Text>
     </View>
   );
@@ -67,20 +57,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  track: {
+  segment: {
     position: "absolute"
-  },
-  fill: {
-    position: "absolute"
-  },
-  clip: {
-    overflow: "hidden",
-    position: "absolute",
-    top: 0
-  },
-  rotator: {
-    position: "absolute",
-    top: 0
   },
   value: {
     color: colors.primary,
