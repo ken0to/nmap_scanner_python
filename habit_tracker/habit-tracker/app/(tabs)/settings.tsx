@@ -1,4 +1,5 @@
-import { StyleSheet, Switch, Text, View } from "react-native";
+import { useState } from "react";
+import { Platform, StyleSheet, Switch, Text, View } from "react-native";
 
 import { AppCard } from "@/components/ui/AppCard";
 import { ScreenShell } from "@/components/ui/ScreenShell";
@@ -6,6 +7,10 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { colors, radius, spacing, typography } from "@/constants/theme";
 
 export default function SettingsScreen() {
+  const [pushNotifications, setPushNotifications] = useState(false);
+  const [dailyReminder, setDailyReminder] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
     <ScreenShell>
       <View>
@@ -25,9 +30,13 @@ export default function SettingsScreen() {
 
       <SectionHeader title="Preferences" />
       <AppCard padded={false}>
-        <SettingRow label="Push notifications" />
-        <SettingRow label="Daily reminder" />
-        <SettingRow label="Dark mode" />
+        <SettingRow
+          label="Push notifications"
+          value={pushNotifications}
+          onValueChange={setPushNotifications}
+        />
+        <SettingRow label="Daily reminder" value={dailyReminder} onValueChange={setDailyReminder} />
+        <SettingRow label="Dark mode" value={darkMode} onValueChange={setDarkMode} />
       </AppCard>
 
       <AppCard padded={false}>
@@ -38,15 +47,29 @@ export default function SettingsScreen() {
   );
 }
 
-function SettingRow({ label }: { label: string }) {
+function SettingRow({
+  label,
+  value,
+  onValueChange
+}: {
+  label: string;
+  value: boolean;
+  onValueChange: (next: boolean) => void;
+}) {
   return (
-    <View style={styles.row}>
-      <Text style={styles.rowLabel}>{label}</Text>
-      <Switch
-        value={false}
-        trackColor={{ false: colors.surfaceSoft, true: colors.surfaceMint }}
-        thumbColor={colors.surface}
-      />
+    <View style={styles.settingRow}>
+      <Text style={styles.settingLabel}>{label}</Text>
+      <View style={styles.switchSlot}>
+        <Switch
+          value={value}
+          onValueChange={onValueChange}
+          trackColor={{ false: "#E6EEFF", true: colors.surfaceMint }}
+          ios_backgroundColor="#E6EEFF"
+          {...(Platform.OS === "android"
+            ? { thumbColor: value ? colors.surface : "#F4F4F5" }
+            : null)}
+        />
+      </View>
     </View>
   );
 }
@@ -98,6 +121,29 @@ const styles = StyleSheet.create({
     color: colors.textMuted,
     fontSize: typography.small,
     marginTop: 2
+  },
+  settingRow: {
+    alignItems: "center",
+    borderBottomColor: colors.borderSoft,
+    borderBottomWidth: 1,
+    flexDirection: "row",
+    minHeight: 60,
+    paddingLeft: spacing.xl,
+    paddingRight: 20
+  },
+  settingLabel: {
+    color: colors.text,
+    flex: 1,
+    flexShrink: 1,
+    fontSize: typography.body,
+    fontWeight: "700",
+    paddingRight: spacing.md
+  },
+  switchSlot: {
+    alignItems: "center",
+    height: 32,
+    justifyContent: "center",
+    width: 52
   },
   row: {
     alignItems: "center",
