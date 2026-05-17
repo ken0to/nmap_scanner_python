@@ -22,6 +22,8 @@ export function ScreenShell({ children, scroll = true, bottomInset = 110 }: Scre
     <SafeAreaView style={styles.screen} edges={["top"]}>
       <ScrollView
         contentContainerStyle={[styles.content, { paddingBottom: bottomInset }]}
+        keyboardShouldPersistTaps="handled"
+        nestedScrollEnabled
         showsVerticalScrollIndicator={false}
       >
         {children}

@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useEffect, useRef } from "react";
+import { Animated, Easing, StyleSheet, Text, View } from "react-native";
+import Svg, { Circle } from "react-native-svg";
 
 import { colors } from "@/constants/theme";
 
@@ -8,45 +10,58 @@ type ProgressRingProps = {
 };
 
 const TRACK_COLOR = "#DEE9FC";
-const SEGMENT_COUNT = 100;
+const STROKE = 8;
+const DURATION_MS = 550;
+
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+
+function getStrokeOffset(progressPercent: number, circumference: number) {
+  const clamped = Math.max(0, Math.min(100, progressPercent));
+  return circumference - (clamped / 100) * circumference;
+}
 
 export function ProgressRing({ value, size = 96 }: ProgressRingProps) {
   const progress = Math.max(0, Math.min(100, value));
   const displayValue = Math.round(progress);
-  const filledSegments = displayValue;
   const center = size / 2;
-  const stroke = 8;
-  const segmentLength = stroke + 2;
-  const segmentWidth = Math.max(3, stroke * 0.45);
-  const ringRadius = center - segmentLength / 2;
+  const radius = (size - STROKE) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const animatedOffset = useRef(new Animated.Value(getStrokeOffset(progress, circumference))).current;
+
+  useEffect(() => {
+    Animated.timing(animatedOffset, {
+      toValue: getStrokeOffset(progress, circumference),
+      duration: DURATION_MS,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: false
+    }).start();
+  }, [animatedOffset, circumference, progress]);
 
   return (
     <View style={[styles.wrap, { height: size, width: size }]}>
-      {Array.from({ length: SEGMENT_COUNT }, (_, index) => {
-        const angle = -90 + (360 / SEGMENT_COUNT) * index;
-        const radians = (angle * Math.PI) / 180;
-        const x = center + Math.cos(radians) * ringRadius;
-        const y = center + Math.sin(radians) * ringRadius;
-        const isFilled = index < filledSegments;
-
-        return (
-          <View
-            key={index}
-            style={[
-              styles.segment,
-              {
-                backgroundColor: isFilled ? colors.primary : TRACK_COLOR,
-                borderRadius: segmentWidth,
-                height: segmentLength,
-                left: x - segmentWidth / 2,
-                top: y - segmentLength / 2,
-                transform: [{ rotate: `${angle + 90}deg` }],
-                width: segmentWidth
-              }
-            ]}
-          />
-        );
-      })}
+      <Svg height={size} style={styles.svg} width={size}>
+        <Circle
+          cx={center}
+          cy={center}
+          fill="transparent"
+          r={radius}
+          stroke={TRACK_COLOR}
+          strokeWidth={STROKE}
+        />
+        <AnimatedCircle
+          cx={center}
+          cy={center}
+          fill="transparent"
+          origin={`${center}, ${center}`}
+          r={radius}
+          rotation={-90}
+          stroke={colors.primary}
+          strokeDasharray={`${circumference} ${circumference}`}
+          strokeDashoffset={animatedOffset}
+          strokeLinecap="round"
+          strokeWidth={STROKE}
+        />
+      </Svg>
       <Text style={styles.value}>{displayValue}%</Text>
     </View>
   );
@@ -57,7 +72,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  segment: {
+  svg: {
     position: "absolute"
   },
   value: {
