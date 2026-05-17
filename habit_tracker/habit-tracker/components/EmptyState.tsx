@@ -37,14 +37,14 @@ const styles = StyleSheet.create({
     marginBottom: spacing.lg
   },
   title: {
-    color: colors.text,
+    color: colors.onPrimary,
     fontSize: 28,
     fontWeight: "800",
     letterSpacing: 0,
     marginBottom: spacing.sm
   },
   copy: {
-    color: colors.textSoft,
+    color: colors.onPrimary,
     fontSize: 16,
     lineHeight: 23,
     marginBottom: spacing.lg
@@ -52,13 +52,13 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     alignSelf: "flex-start",
-    backgroundColor: colors.text,
+    backgroundColor: colors.onPrimary,
     borderRadius: radius.lg,
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.md
   },
   buttonText: {
-    color: colors.black,
+    color: colors.primary,
     fontSize: 15,
     fontWeight: "800"
   }

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HabitFlow - Stats</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#d9e6dd",
+                        "primary": "#3525cd",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#3f4b45",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d0dbed",
+                        "on-surface-variant": "#464555",
+                        "secondary-container": "#c3ecd7",
+                        "inverse-primary": "#c3c0ff",
+                        "tertiary-fixed-dim": "#bdcac1",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-high": "#dee9fc",
+                        "on-secondary-container": "#476c5b",
+                        "outline": "#777587",
+                        "surface-variant": "#d9e3f6",
+                        "tertiary-container": "#57635c",
+                        "outline-variant": "#c7c4d8",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#131e19",
+                        "surface-bright": "#f8f9ff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#a8cfbc",
+                        "surface-tint": "#4d44e3",
+                        "on-surface": "#121c2a",
+                        "on-primary-fixed": "#0f0069",
+                        "inverse-surface": "#27313f",
+                        "surface-container": "#e6eeff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#3e4943",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface": "#f8f9ff",
+                        "on-primary-container": "#dad7ff",
+                        "secondary": "#416656",
+                        "on-secondary-fixed-variant": "#294e3f",
+                        "on-secondary-fixed": "#002115",
+                        "primary-fixed": "#e2dfff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#121c2a",
+                        "surface-container-highest": "#d9e3f6",
+                        "background": "#f8f9ff",
+                        "on-tertiary-container": "#d2dfd6",
+                        "primary-container": "#4f46e5",
+                        "secondary-fixed": "#c3ecd7",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed-dim": "#c3c0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "24px",
+                        "sm": "12px",
+                        "margin-desktop": "auto",
+                        "lg": "40px",
+                        "margin-mobile": "16px",
+                        "max-width-content": "1200px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "xl": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .organic-gradient {
+            background: radial-gradient(circle at 10% 20%, rgba(195, 236, 215, 0.3) 0%, rgba(248, 249, 255, 0) 50%),
+                        radial-gradient(circle at 90% 80%, rgba(226, 223, 255, 0.4) 0%, rgba(248, 249, 255, 0) 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen organic-gradient font-body-md">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 w-full z-50 flex justify-between items-center px-margin-mobile py-base md:px-lg md:py-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a person with a serene expression, set against a soft-focus minimalist background. The lighting is bright and airy, reflecting a clean and modern corporate aesthetic. The color palette uses subtle light sage and cool white tones to evoke a sense of professional calm and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD1d8BfF5-il_aTM0i40H8o7mAQSmqmi8mZ09xPCVIqbxcnaRwSLVKtLd5K8ciSxVoRI_brHC1bImthx9NqgCOmDza09HJfsa_UnJBi7g0gSsztYsiu-b-oHGfRFxdk01ySe70XG7OIjP9gKEsy8aBFbm6yKvi-MPJYKTUF0lwiASHoFGAMa6MVQ68Cc0qmfXzMc5oNDkJg6Ro2ZoDTlT09W60h49q_roVNUpqoYgO_f8RAvdqVTzVhk8jzEWgLoVATQUeazBogg4"/>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary">HabitFlow</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">calendar_today</button>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-margin-mobile md:px-lg py-lg pb-32">
+<div class="flex flex-col gap-lg">
+<!-- Global Progress Section: Asymmetric Layout -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 glass-card rounded-3xl p-md md:p-lg shadow-[0_4px_20px_0_rgba(0,0,0,0.04)] relative overflow-hidden group">
+<div class="relative z-10">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Global Progress</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">You're more consistent than 85% of users. Your commitment to "Daily Mindfulness" is driving your upward trend this month.</p>
+<div class="mt-lg flex items-end gap-sm">
+<span class="font-display-lg text-display-lg text-primary">85%</span>
+<span class="font-label-md text-label-md text-secondary mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">trending_up</span> +12% from last week
+                            </span>
+</div>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute -right-16 -bottom-16 w-64 h-64 bg-secondary-container rounded-full opacity-20 blur-3xl group-hover:scale-110 transition-transform duration-700"></div>
+</div>
+<!-- Consistency Score: Circle Gauge -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-3xl p-md md:p-lg shadow-[0_4px_20px_0_rgba(0,0,0,0.04)] flex flex-col items-center justify-center text-center">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-widest mb-md">Consistency Score</h3>
+<div class="relative w-40 h-40 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-tertiary-fixed opacity-30" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-secondary" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="88" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-display-lg text-display-lg text-on-surface">92</span>
+<span class="font-label-sm text-label-sm text-outline">ELITE</span>
+</div>
+</div>
+<button class="mt-md text-primary font-label-md hover:underline">View details</button>
+</div>
+</section>
+<!-- Habit Breakdown & Best Streaks: Bento Style -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Habit Breakdown (Bar Chart) -->
+<div class="md:col-span-7 glass-card rounded-3xl p-md md:p-lg shadow-[0_4px_20px_0_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface">Habit Breakdown</h3>
+<span class="material-symbols-outlined text-outline">more_horiz</span>
+</div>
+<div class="space-y-md">
+<!-- Chart Row 1 -->
+<div class="space-y-xs">
+<div class="flex justify-between text-label-md font-label-md">
+<span class="text-on-surface">Health</span>
+<span class="text-outline">94%</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[94%] rounded-full"></div>
+</div>
+</div>
+<!-- Chart Row 2 -->
+<div class="space-y-xs">
+<div class="flex justify-between text-label-md font-label-md">
+<span class="text-on-surface">Mind</span>
+<span class="text-outline">78%</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[78%] rounded-full"></div>
+</div>
+</div>
+<!-- Chart Row 3 -->
+<div class="space-y-xs">
+<div class="flex justify-between text-label-md font-label-md">
+<span class="text-on-surface">Productivity</span>
+<span class="text-outline">62%</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-outline-variant w-[62%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Best Streaks List -->
+<div class="md:col-span-5 bg-surface-container-lowest rounded-3xl p-md md:p-lg shadow-[0_4px_20px_0_rgba(0,0,0,0.04)]">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-lg">Best Streaks</h3>
+<div class="space-y-sm">
+<!-- Streak Item 1 -->
+<div class="flex items-center justify-between p-sm bg-surface rounded-2xl border border-outline-variant/10">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Morning Yoga</p>
+<p class="font-label-sm text-label-sm text-outline">Daily</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-secondary">42</p>
+<p class="font-label-sm text-label-sm text-outline">DAYS</p>
+</div>
+</div>
+<!-- Streak Item 2 -->
+<div class="flex items-center justify-between p-sm bg-surface rounded-2xl border border-outline-variant/10">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Deep Work</p>
+<p class="font-label-sm text-label-sm text-outline">Weekdays</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-primary">28</p>
+<p class="font-label-sm text-label-sm text-outline">DAYS</p>
+</div>
+</div>
+<!-- Streak Item 3 -->
+<div class="flex items-center justify-between p-sm bg-surface rounded-2xl border border-outline-variant/10">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Hydration</p>
+<p class="font-label-sm text-label-sm text-outline">Daily</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-on-surface-variant">15</p>
+<p class="font-label-sm text-label-sm text-outline">DAYS</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Insight Section: Modern Large Image/Card -->
+<section class="glass-card rounded-3xl overflow-hidden shadow-xl grid md:grid-cols-2">
+<div class="p-md md:p-xl flex flex-col justify-center">
+<span class="font-label-md text-label-md text-primary bg-primary-fixed px-3 py-1 rounded-full w-fit mb-md">AI Insight</span>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-md">Productive Evenings Lead to Better Mornings</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">Our analysis shows a direct correlation between your "Screen-free Evenings" and the success rate of your "Morning Exercise" habit. Keeping your evening streak alive will likely improve your morning energy by 20%.</p>
+<button class="bg-primary text-on-primary px-lg py-md rounded-full font-label-md w-fit hover:opacity-90 transition-opacity active:scale-95">Enable Evening Reminders</button>
+</div>
+<div class="h-64 md:h-auto overflow-hidden">
+<img alt="Peaceful workspace" class="w-full h-full object-cover" data-alt="A minimalist and serene home office workspace at dusk, featuring a clean desk with a single candle, a journal, and a small green plant. The lighting is soft and warm from a desk lamp, contrasting with the cool blue tones of the fading evening light through a window. The style is modern corporate minimalist, emphasizing focus, tranquility, and mental clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBITCsJYjzhvJabwHMk-P8TIOR0klkv7h7bEtI_CtZuJqn0U5PDtZCDzUbEQoAjrPt6PiVivYPfuXa4_NSg_9n8FNuMXT6J4ueeHmWyKMbzK0gYYhfF7IRnkLve7_KE_3rgYYYxO3TYbtqIzrwY96TTl64FrzYXobJvRyH01ADdOZzXAASwYchOh8HA9Ll2wWMKJe3EKBumzefLF3C_LTP5JvGYc3HN3keegzJWtbjW8HAZx4P5E8Ax-SQYLBL_gUbtPlv_7ZJdpS4"/>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-container-lowest shadow-[0_-4px_20px_0_rgba(0,0,0,0.04)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="today">today</span>
+<span class="font-label-md text-label-md">Today</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="leaderboard" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="font-label-md text-label-md">Stats</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="font-label-md text-label-md">Trends</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</button>
+</nav>
+</body></html>

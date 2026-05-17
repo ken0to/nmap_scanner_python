@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HabitFlow - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#d0dbed",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-fixed": "#c3ecd7",
+                    "on-secondary-container": "#476c5b",
+                    "tertiary-container": "#57635c",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "inverse-primary": "#c3c0ff",
+                    "on-secondary-fixed": "#002115",
+                    "secondary-fixed-dim": "#a8cfbc",
+                    "secondary-container": "#c3ecd7",
+                    "secondary": "#416656",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-background": "#121c2a",
+                    "on-surface": "#121c2a",
+                    "outline": "#777587",
+                    "surface-container": "#e6eeff",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#e2dfff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#27313f",
+                    "outline-variant": "#c7c4d8",
+                    "surface-tint": "#4d44e3",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary": "#3f4b45",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "surface": "#f8f9ff",
+                    "surface-variant": "#d9e3f6",
+                    "on-surface-variant": "#464555",
+                    "on-tertiary-container": "#d2dfd6",
+                    "surface-container-high": "#dee9fc",
+                    "tertiary-fixed": "#d9e6dd",
+                    "on-primary-container": "#dad7ff",
+                    "on-secondary-fixed-variant": "#294e3f",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#d9e3f6",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#002115",
+                    "tertiary-fixed-dim": "#bdcac1",
+                    "background": "#f8f9ff",
+                    "primary": "#3525cd",
+                    "primary-container": "#4f46e5",
+                    "on-tertiary-fixed": "#131e19",
+                    "on-tertiary-fixed-variant": "#3e4943",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "base": "8px",
+                    "xl": "64px",
+                    "margin-desktop": "auto",
+                    "lg": "40px",
+                    "max-width-content": "1200px",
+                    "md": "24px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-xl">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-background">
+<div class="flex justify-between items-center px-margin-mobile py-base w-full max-w-max-width-content mx-auto">
+<div class="flex items-center gap-base">
+<div class="w-10 h-10 rounded-full overflow-hidden">
+<img alt="User Profile" data-alt="A clean and professional profile portrait of a high-achieving individual in a minimalist digital art style. The character is set against a soft Sage background, reflecting a productive and calm atmosphere. The lighting is bright and modern, consistent with a high-end enterprise application interface. The color palette uses muted greens and warm neutral tones for a serene aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB08otZusvGpkdZ4sLNkZsVldg2P1I92sArpgkdQ1e4YtecXegcBEPAX_0wW-5Us5QsRMapugkgxcHmDn7wzAzvT8WbE_IvhfOjefaU4D9HUzGydkUTpmisjavG7QHcPdkxCS0O9Ulk_OiOWnWeMHoRJrZ0w_OtLBZFtbXOWj2q53yXrv8Om6ltXhlYS1wzgmAw7IlYBRCsnF7x5VViLnyOl3chava_nmBCiCsJPsW4DySNtDRJOw-3sa6wD_NmgGixnLvpb4mg38k"/>
+</div>
+<h1 class="font-display-lg text-headline-md text-primary dark:text-primary-fixed-dim">HabitFlow</h1>
+</div>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim p-base rounded-full hover:bg-surface-container-low transition-colors active:opacity-80 duration-200">
+                calendar_today
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[80px] px-margin-mobile md:px-lg max-w-max-width-content mx-auto flex flex-col gap-lg">
+<!-- Page Title -->
+<section class="mt-base">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">Settings</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Customize your experience and manage your data.</p>
+</section>
+<!-- Account Section -->
+<section class="flex flex-col gap-md">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider">Account</h3>
+<div class="bg-surface-container-lowest rounded-[24px] p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col md:flex-row items-center justify-between gap-md">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px] text-on-secondary-container">person</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface">Alex Thompson</p>
+<p class="font-body-md text-body-md text-on-surface-variant">alex.thompson@habitflow.com</p>
+</div>
+</div>
+<button class="bg-secondary-container text-on-secondary-container px-lg py-base rounded-full font-label-md text-label-md hover:opacity-90 transition-all active:scale-95">
+                    Edit Profile
+                </button>
+</div>
+</section>
+<!-- Preferences Section (Asymmetric Grid) -->
+<section class="flex flex-col gap-md">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider">Preferences</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Push Notifications -->
+<div class="bg-surface-container-lowest rounded-[24px] p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center justify-between">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">notifications</span>
+<span class="font-body-md text-body-md text-on-surface">Push Notifications</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Daily Reminder -->
+<div class="bg-surface-container-lowest rounded-[24px] p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center justify-between">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">alarm</span>
+<span class="font-body-md text-body-md text-on-surface">Daily Reminder</span>
+</div>
+<div class="flex items-center gap-sm">
+<input class="bg-surface-container text-on-surface border-none rounded-lg px-base py-xs font-label-md text-label-md focus:ring-2 focus:ring-primary" type="time" value="08:00"/>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+<!-- Dark Mode -->
+<div class="bg-surface-container-lowest rounded-[24px] p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center justify-between md:col-span-2">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">dark_mode</span>
+<span class="font-body-md text-body-md text-on-surface">Dark Mode</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Data Management Section -->
+<section class="flex flex-col gap-md">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider">Data Management</h3>
+<div class="flex flex-col md:flex-row gap-md">
+<button class="flex-1 bg-surface-container-lowest border-2 border-outline-variant rounded-[24px] p-md flex items-center justify-center gap-base font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">download</span>
+                    Export Data (CSV)
+                </button>
+<button class="flex-1 bg-error-container text-on-error-container rounded-[24px] p-md flex items-center justify-center gap-base font-label-md text-label-md hover:opacity-90 transition-colors">
+<span class="material-symbols-outlined">delete_forever</span>
+                    Clear All Data
+                </button>
+</div>
+</section>
+<!-- About Section -->
+<section class="flex flex-col gap-md mb-lg">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider">About</h3>
+<div class="bg-surface-container-lowest rounded-[24px] p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col gap-md">
+<div class="flex justify-between items-center py-base">
+<span class="font-body-md text-body-md text-on-surface">App Version</span>
+<span class="font-label-md text-label-md text-on-surface-variant">v2.4.1 (Stable)</span>
+</div>
+<div class="h-[1px] bg-outline-variant opacity-30"></div>
+<a class="flex justify-between items-center py-base hover:bg-surface-container-low rounded-lg px-base -mx-base transition-colors" href="#">
+<span class="font-body-md text-body-md text-on-surface">Help &amp; Support</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</a>
+<div class="h-[1px] bg-outline-variant opacity-30"></div>
+<a class="flex justify-between items-center py-base hover:bg-surface-container-low rounded-lg px-base -mx-base transition-colors" href="#">
+<span class="font-body-md text-body-md text-on-surface">Privacy Policy</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</a>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-margin-mobile pb-md pt-base bg-surface-container-lowest dark:bg-inverse-surface shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl z-50">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-base py-xs hover:bg-surface-container-high transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-sm text-label-sm">Today</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-base py-xs hover:bg-surface-container-high transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined">insert_chart</span>
+<span class="font-label-sm text-label-sm">Stats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-base py-xs hover:bg-surface-container-high transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-sm text-label-sm">Trends</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-container text-on-secondary-container dark:text-secondary-fixed rounded-full px-base py-xs transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</div>
+</nav>
+</body></html>
