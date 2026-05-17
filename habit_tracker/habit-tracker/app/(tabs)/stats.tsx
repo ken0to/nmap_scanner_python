@@ -6,15 +6,18 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { StatCard } from "@/components/ui/StatCard";
 import { colors, radius, spacing, typography } from "@/constants/theme";
 import { useHabits } from "@/storage/HabitsContext";
-import { getCurrentMonthDays, getHabitStreak } from "@/utils/habitDates";
-import { monthlyCompletionRate } from "@/utils/habitAnalytics";
+import {
+  getCurrentMonthDays,
+  getHabitStreak,
+  getMonthlyCalendarCompletionPercent
+} from "@/utils/habitDates";
 
 export default function StatsScreen() {
   const { activeHabits } = useHabits();
   const month = new Date();
   const monthDays = getCurrentMonthDays(month);
   const completedDates = new Set(activeHabits.flatMap((habit) => habit.completedDates));
-  const averageRate = monthlyCompletionRate(activeHabits, month);
+  const monthlyCompletion = getMonthlyCalendarCompletionPercent(activeHabits, month);
   const longestStreak = activeHabits.reduce((max, habit) => Math.max(max, getHabitStreak(habit)), 0);
 
   return (
@@ -29,7 +32,7 @@ export default function StatsScreen() {
           <Text style={styles.cardTitle}>
             {month.toLocaleDateString(undefined, { month: "long", year: "numeric" })}
           </Text>
-          <Text style={styles.cardMeta}>{Math.round(averageRate)}%</Text>
+          <Text style={styles.cardMeta}>{monthlyCompletion}%</Text>
         </View>
         <View style={styles.calendar}>
           {monthDays.map((dayKey) => (
@@ -46,7 +49,7 @@ export default function StatsScreen() {
       </AppCard>
 
       <View style={styles.statsGrid}>
-        <StatCard label="Completion" value={`${Math.round(averageRate)}%`} helper="this month" tone="primary" />
+        <StatCard label="Completion" value={`${monthlyCompletion}%`} helper="this month" tone="primary" />
         <StatCard label="Best streak" value={`${longestStreak}`} helper="days" tone="success" />
       </View>
 

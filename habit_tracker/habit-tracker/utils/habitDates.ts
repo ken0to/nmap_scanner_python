@@ -44,6 +44,20 @@ export function getMonthCompletionCount(habit: Habit, monthDays = getCurrentMont
   return monthDays.filter((day) => habit.completedDates.includes(day)).length;
 }
 
+/** Unique calendar days in the month with at least one habit completion (matches Stats calendar). */
+export function getMonthlyCalendarCompletionPercent(habits: Habit[], month: Date = new Date()) {
+  const monthDays = getCurrentMonthDays(month);
+  const completedDates = new Set(habits.flatMap((habit) => habit.completedDates));
+  const completedDays = monthDays.filter((dayKey) => completedDates.has(dayKey)).length;
+  const totalDays = monthDays.length;
+
+  if (totalDays === 0) {
+    return 0;
+  }
+
+  return Math.round((completedDays / totalDays) * 100);
+}
+
 export function getHabitStreak(habit: Habit) {
   let streak = 0;
   const completed = new Set(habit.completedDates);
