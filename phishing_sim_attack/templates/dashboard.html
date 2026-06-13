@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container wide">
+    <h1>Dashboard</h1>
+
+    <h2>Campaigns</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            
+            <th>Submitted Email</th>
+            <th>Submitted Password</th>
+            <th>Template</th>
+            <th>Clicked</th>
+            <th>Submitted</th>
+            <th>Created</th>
+            <th>Clicked At</th>
+            <th>Submitted At</th>
+        </tr>
+
+        {% for campaign in campaigns %}
+        <tr>
+            <td>{{ campaign[0] }}</td>
+            <td>{{ campaign[2] }}</td>
+            <td>{{ campaign[1] }}</td>
+            <td>{{ campaign[3] }}</td>
+            <td>{% if campaign[4] == 1 %}Yes{% else %}No{% endif %}</td>
+            <td>{% if campaign[5] == 1 %}Yes{% else %}No{% endif %}</td>
+            <td>{{ campaign[6] }}</td>
+            <td>{{ campaign[7] }}</td>
+            <td>{{ campaign[8] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Interaction Log</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Token</th>
+            <th>Action</th>
+            <th>Timestamp</th>
+        </tr>
+
+        {% for interaction in interactions %}
+        <tr>
+            <td>{{ interaction[0] }}</td>
+            <td>{{ interaction[1] }}</td>
+            <td>{{ interaction[2] }}</td>
+            <td>{{ interaction[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/">Back to Home</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phishing Awareness Simulator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Phishing Awareness Simulator</h1>
+    <p>Create a safe simulation link.</p>
+
+    <form method="POST">
+        <label>Template</label>
+        <select name="template" required>
+            <option value="Password Reset">Password Reset</option>
+            <option value="Security Alert">Security Alert</option>
+            <option value="Invoice Payment">Invoice Payment</option>
+            <option value="IT Department Update">IT Department Update</option>
+        </select>
+
+        <button type="submit">Generate Simulation Link</button>
+    </form>
+
+    <a href="/dashboard">View Dashboard</a>
+</div>
+</body>
+</html>

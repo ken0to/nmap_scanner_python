@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Verification</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+    {% if submitted %}
+        <h1>This was a simulation</h1>
+        <p>You interacted with a cybersecurity awareness training page.</p>
+
+        <div class="warning">
+            <strong>Lesson:</strong> Always check the sender, domain, link, urgency, and page context before submitting information.
+        </div>
+
+        <a href="/">Back to Home</a>
+    {% else %}
+        <h1>Security Verification Required</h1>
+        <p>Please verify your details to continue.</p>
+
+        <form method="POST" id="fakeForm">
+            <label>Email</label>
+            <input type="email" name="submitted_email" id="emailInput" placeholder="Email address" required>
+
+            <label>Password</label>
+            <input type="password" name="submitted_name" id="nameInput" placeholder="Password is not saved" required>
+
+            <button type="submit">Verify Account</button>
+        </form>
+    {% endif %}
+</div>
+
+{% if not submitted %}
+<script>
+    function track(action) {
+        fetch("/track/{{ token }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "action=" + encodeURIComponent(action)
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        track("page_loaded");
+
+        const emailInput = document.getElementById("emailInput");
+        const nameInput = document.getElementById("nameInput");
+        const fakeForm = document.getElementById("fakeForm");
+
+        let typedEmail = false;
+        let typedName = false;
+
+        emailInput.addEventListener("focus", function () {
+            track("focused_email_field");
+        });
+
+        nameInput.addEventListener("focus", function () {
+            track("focused_name_field");
+        });
+
+        emailInput.addEventListener("input", function () {
+            if (!typedEmail) {
+                track("started_typing_email");
+                typedEmail = true;
+            }
+        });
+
+        nameInput.addEventListener("input", function () {
+            if (!typedName) {
+                track("started_typing_name");
+                typedName = true;
+            }
+        });
+
+        fakeForm.addEventListener("submit", function () {
+            track("clicked_submit_button");
+        });
+    });
+</script>
+{% endif %}
+</body>
+</html>
